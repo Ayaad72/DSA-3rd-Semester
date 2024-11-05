@@ -1,39 +1,29 @@
 #include<iostream>
-
 using namespace std;
-
-template <class T> class LinkedList{
+template <class T> 
+class LinkedList{
 private:
 	struct Node{
 		T data;
 		Node* next;
-		
-		Node(T val, Node* Link = 0): data(val), next(Link){}
-		
+		Node(T val, Node* Link = 0): data(val), next(Link){}	
 	};
-	
 	Node* head;
 	public:
 		LinkedList(): head(0){}
-		
 		bool empty() const {
-		return head == 0;
 		}
-		
 		void addFirst(const T& val);
 		void addLast(const T& val);
 		void display();
 		void del(const T& val);
 		T delFirst();
-		
 };
-
 template<class T> void LinkedList<T> :: addFirst(const T& val){
 	Node* n = new Node(val);
 	n->next = head;
 	head = n;
 }
-
 template<class T> void LinkedList<T> :: addLast(const T& val){
 	if (head == 0){
 		return addFirst(val);
@@ -43,7 +33,6 @@ template<class T> void LinkedList<T> :: addLast(const T& val){
 	Node* n = new Node(val);
 	p->next = n;
 }
-
 template <class T> void LinkedList<T> :: display(){
 	cout << "[ ";
 	for(Node* i = head;i != 0;i = i->next){
@@ -51,9 +40,7 @@ template <class T> void LinkedList<T> :: display(){
 	}
 	cout << " ]";
 } 
-
 class ListEmptyException{ };
-
 template <class T> T LinkedList<T>::delFirst(){
 	if (head == 0){
 		throw ListEmptyException();
